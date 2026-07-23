@@ -1,0 +1,36 @@
+.promo-banner__slide {
+  position: relative;
+  width: 100%;
+}
+
+.promo-banner__cta {
+  border: none;
+  cursor: pointer;
+}
+
+.promo-banner__cta:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.promo-banner__nav {
+  border: none;
+  cursor: pointer;
+}
+
+.promo-banner__nav--prev {
+  left: 0.75rem;
+}
+
+.promo-banner__nav--next {
+  right: 0.75rem;
+}
+
+.promo-banner__dot {
+  border: none;
+  cursor: pointer;
+}
+
+.promo-banner__dot.active {
+  background-color: white;
+  width: 1.25rem;
+}

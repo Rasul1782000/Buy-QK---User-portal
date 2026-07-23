@@ -1,0 +1,13 @@
+.category-grid__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.category-grid__see-all {
+  text-decoration: none;
+}
+
+.category-grid__see-all:hover {
+  text-decoration: underline;
+}

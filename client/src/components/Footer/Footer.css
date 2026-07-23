@@ -1,0 +1,16 @@
+.footer {
+  background-color: var(--color-midnight);
+  margin-top: 2rem;
+}
+
+.footer__link {
+  text-decoration: none;
+}
+
+.footer__link:hover {
+  color: var(--color-brand-green);
+}
+
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

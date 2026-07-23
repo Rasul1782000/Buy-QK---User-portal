@@ -1,0 +1,28 @@
+.location-detector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+}
+
+.location-detector__icon {
+  color: var(--color-brand-green);
+}
+
+.location-detector__detect {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-brand-green);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.location-detector__detect:hover {
+  text-decoration: underline;
+}
+
+.location-detector__detect:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

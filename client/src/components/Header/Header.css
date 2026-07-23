@@ -1,0 +1,28 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header__logo {
+  text-decoration: none;
+}
+
+.header__login {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.header__cart {
+  border: none;
+  cursor: pointer;
+}
+
+.header__cart:hover {
+  background-color: var(--color-brand-green-light);
+}
+
+.header__login:hover {
+  color: var(--color-brand-yellow);
+}

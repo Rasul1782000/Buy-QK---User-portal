@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 40" fill="none">
+  <rect x="2" y="2" width="36" height="36" rx="8" fill="#54B226"/>
+  <rect x="6" y="6" width="28" height="28" rx="5" fill="#F8CB46"/>
+  <text x="12" y="28" font-family="Inter, Helvetica, Arial, sans-serif" font-weight="900" font-size="18" fill="#1A1A2E">QK</text>
+  <text x="48" y="29" font-family="Inter, Helvetica, Arial, sans-serif" font-weight="800" font-size="24" fill="#0C831F">Buy</text>
+  <text x="96" y="29" font-family="Inter, Helvetica, Arial, sans-serif" font-weight="800" font-size="24" fill="#1A1A2E">QK</text>
+</svg>

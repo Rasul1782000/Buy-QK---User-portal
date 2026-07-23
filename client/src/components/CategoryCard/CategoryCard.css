@@ -1,0 +1,11 @@
+.category-card {
+  text-decoration: none;
+}
+
+.category-card:hover .category-card__icon {
+  transform: scale(1.1);
+}
+
+.category-card:hover .category-card__name {
+  color: var(--color-brand-green);
+}

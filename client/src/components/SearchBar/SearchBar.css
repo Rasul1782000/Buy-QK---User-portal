@@ -1,0 +1,20 @@
+.search-bar__clear {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.search-bar__clear:hover {
+  color: var(--color-text-primary);
+}
+
+.search-bar__tag {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.search-bar__tag:hover {
+  background-color: var(--color-brand-green);
+  color: white;
+  border-color: var(--color-brand-green);
+}
