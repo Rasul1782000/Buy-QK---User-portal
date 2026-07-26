@@ -7,14 +7,18 @@
   --color-logo-green: #54B226;
   --color-promo-red: #F34343;
   --color-midnight: #1A1A2E;
-
-  --color-surface-white: #FFFFFF;
-  --color-surface-gray: #F8F8F8;
-  --color-text-primary: #000000;
-  --color-text-body: #333333;
-  --color-text-muted: #828282;
-  --color-border-gray: #CCCCCC;
-
+  --color-dark-navy: #1E3A8A;
+  --color-dark-navy-hover: #1e40af;
+  --color-gold: #D97706;
+  --color-gold-hover: #b45309;
+  --color-gold-light: #f59e0b;
+  --color-cream: #fefcf3;
+  --color-cream-warm: #fdf6e3;
+  --color-surface-white: #ffffff;
+  --color-text-primary: #1e293b;
+  --color-text-body: #475569;
+  --color-text-muted: #94a3b8;
+  --color-border: #e2e8f0;
   --font-heading: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-body: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -26,11 +30,32 @@
     box-sizing: border-box;
   }
 
+  html,
+  body,
+  #root {
+    height: 100%;
+    overflow: hidden;
+  }
+
   body {
     font-family: var(--font-body);
-    background-color: var(--color-surface-white);
+    background-color: var(--color-cream);
     color: var(--color-text-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .brand-dot {
+    display: inline-block;
+    width: 0.4em;
+    height: 0.4em;
+    background: #ef4444;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-left: 0.08em;
+    margin-right: 0.05em;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
   }
 }

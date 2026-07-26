@@ -1,6 +1,8 @@
 .promo-banner__slide {
   position: relative;
   width: 100%;
+  min-height: 180px;
+  overflow: hidden;
 }
 
 .promo-banner__cta {
@@ -33,4 +35,20 @@
 .promo-banner__dot.active {
   background-color: white;
   width: 1.25rem;
+}
+
+.promo-banner__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.promo-banner__subtitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }

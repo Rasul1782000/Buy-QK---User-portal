@@ -1,13 +1,15 @@
 import { useState } from 'react'
+import { useTranslation } from '../../translations'
 import './LocationDetector.css'
 
 export default function LocationDetector() {
-  const [location, setLocation] = useState('Detecting location...')
+  const { t } = useTranslation()
+  const [location, setLocation] = useState(t('location.detecting'))
   const [loading, setLoading] = useState(false)
 
   const detectLocation = () => {
     if (!navigator.geolocation) {
-      setLocation('Geolocation not supported')
+      setLocation(t('location.unsupported'))
       return
     }
     setLoading(true)
@@ -17,7 +19,7 @@ export default function LocationDetector() {
         setLoading(false)
       },
       () => {
-        setLocation('Koramangala, Bengaluru')
+        setLocation(t('location.fallback'))
         setLoading(false)
       },
       { timeout: 5000 }
@@ -30,7 +32,7 @@ export default function LocationDetector() {
         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
       </svg>
       <div className="location-detector__info flex flex-col">
-        <span className="location-detector__label text-[11px] text-text-muted leading-none">Delivery in 10 minutes</span>
+        <span className="location-detector__label text-[11px] text-text-muted leading-none">{t('location.delivery')}</span>
         <div className="location-detector__value flex items-center gap-1">
           <span className="location-detector__address text-sm font-semibold truncate max-w-[180px]">{location}</span>
           <button
@@ -38,7 +40,7 @@ export default function LocationDetector() {
             disabled={loading}
             className="location-detector__detect text-brand-green text-xs font-semibold hover:underline whitespace-nowrap"
           >
-            {loading ? 'Detecting...' : 'Detect my location'}
+            {loading ? t('location.detectBtnLoading') : t('location.detectBtn')}
           </button>
         </div>
       </div>

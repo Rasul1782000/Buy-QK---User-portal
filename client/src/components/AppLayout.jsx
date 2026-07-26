@@ -1,10 +1,10 @@
-import Header from '../components/Header'
-import PromoBanner from '../components/PromoBanner'
-import CategoryGrid from '../components/CategoryGrid'
-import Footer from '../components/Footer'
+import Header from './Header'
+import PromoBanner from './PromoBanner'
+import CategoryGrid from './CategoryGrid'
+import Footer from './Footer'
 import { useTranslation } from '../translations'
 
-export default function HomePage() {
+export default function AppLayout() {
   const { t } = useTranslation()
 
   return (

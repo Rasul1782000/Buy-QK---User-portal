@@ -6,12 +6,14 @@ const { seedDb } = require('./seed')
 const categoryRoutes = require('./routes/categories')
 const bannerRoutes = require('./routes/banners')
 const searchRoutes = require('./routes/search')
+const authRoutes = require('./routes/auth')
 
 const app = express()
 
 app.use(cors({ origin: config.corsOrigin, credentials: true }))
 app.use(express.json())
 
+app.use('/api/auth', authRoutes)
 app.use('/api/categories', categoryRoutes)
 app.use('/api/banners', bannerRoutes)
 app.use('/api/search', searchRoutes)

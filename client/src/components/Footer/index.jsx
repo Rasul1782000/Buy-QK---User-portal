@@ -1,6 +1,23 @@
+import { useTranslation } from '../../translations'
 import './Footer.css'
 
 export default function Footer() {
+  const { t } = useTranslation()
+
+  const companyLinks = [
+    { label: t('footer.aboutUs'), href: '#' },
+    { label: t('footer.careers'), href: '#' },
+    { label: t('footer.blog'), href: '#' },
+    { label: t('footer.press'), href: '#' },
+  ]
+
+  const supportLinks = [
+    { label: t('footer.helpCenter'), href: '#' },
+    { label: t('footer.partner'), href: '#' },
+    { label: t('footer.terms'), href: '#' },
+    { label: t('footer.privacy'), href: '#' },
+  ]
+
   return (
     <footer className="footer bg-midnight mt-8">
       <div className="footer__container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -16,27 +33,27 @@ export default function Footer() {
               </div>
             </div>
             <p className="footer__description text-text-muted text-sm leading-relaxed max-w-xs">
-              Every Local Need. One Intelligent Marketplace. Connecting customers, local businesses, and delivery partners for Indian neighborhoods.
+              {t('footer.description')}
             </p>
           </div>
 
           <div className="footer__links grid grid-cols-2 gap-6">
             <div>
-              <h4 className="text-white font-semibold text-sm mb-3">Company</h4>
+              <h4 className="text-white font-semibold text-sm mb-3">{t('footer.company')}</h4>
               <ul className="space-y-2">
-                {['About Us', 'Careers', 'Blog', 'Press'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="footer__link text-text-muted text-sm hover:text-brand-green transition-colors">{item}</a>
+                {companyLinks.map((item) => (
+                  <li key={item.label}>
+                    <a href={item.href} className="footer__link text-text-muted text-sm hover:text-brand-green transition-colors">{item.label}</a>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold text-sm mb-3">Support</h4>
+              <h4 className="text-white font-semibold text-sm mb-3">{t('footer.support')}</h4>
               <ul className="space-y-2">
-                {['Help Center', 'Partner with us', 'Terms', 'Privacy'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="footer__link text-text-muted text-sm hover:text-brand-green transition-colors">{item}</a>
+                {supportLinks.map((item) => (
+                  <li key={item.label}>
+                    <a href={item.href} className="footer__link text-text-muted text-sm hover:text-brand-green transition-colors">{item.label}</a>
                   </li>
                 ))}
               </ul>
@@ -44,13 +61,13 @@ export default function Footer() {
           </div>
 
           <div className="footer__download">
-            <h4 className="text-white font-semibold text-sm mb-3">Download the app</h4>
+            <h4 className="text-white font-semibold text-sm mb-3">{t('footer.download')}</h4>
             <div className="flex flex-col gap-3">
               <a href="#" className="block w-40">
-                <img src="/app-store.svg" alt="Download on App Store" className="w-full" />
+                <img src="/app-store.svg" alt={t('footer.appStoreAlt')} className="w-full" />
               </a>
               <a href="#" className="block w-40">
-                <img src="/play-store.svg" alt="Get it on Google Play" className="w-full" />
+                <img src="/play-store.svg" alt={t('footer.googlePlayAlt')} className="w-full" />
               </a>
             </div>
           </div>
@@ -58,10 +75,10 @@ export default function Footer() {
 
         <div className="footer__bottom border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="footer__copyright text-text-muted text-xs">
-            &copy; 2026 BuyQK. All rights reserved.
+            {t('footer.copyright')}
           </p>
           <p className="footer__tagline text-text-muted text-xs">
-            Made for busy city shoppers across India.
+            {t('footer.tagline')}
           </p>
         </div>
       </div>

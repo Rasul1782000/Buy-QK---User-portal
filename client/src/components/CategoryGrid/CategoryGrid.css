@@ -2,12 +2,26 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  contain: layout style;
+  min-height: 0;
 }
 
 .category-grid__see-all {
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .category-grid__see-all:hover {
   text-decoration: underline;
+}
+
+.category-grid__list {
+  contain: layout style;
+  min-height: 0;
+}
+
+.category-grid__list > * {
+  contain: layout style size;
+  min-height: 0;
+  overflow: hidden;
 }

@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import { getPopularSearches } from '../../api/client'
+import { useTranslation } from '../../translations'
 import './SearchBar.css'
-
-const defaultSearches = ['Milk', 'Bread', 'Sugar', 'Butter', 'Paneer', 'Chocolate']
 
 export default function SearchBar() {
   const [query, setQuery] = useState('')
-  const [popularSearches, setPopularSearches] = useState(defaultSearches)
+  const [popularSearches, setPopularSearches] = useState([])
+  const { t } = useTranslation()
 
   useEffect(() => {
+    setPopularSearches(['Milk', 'Bread', 'Sugar', 'Butter', 'Paneer', 'Chocolate'])
     getPopularSearches()
       .then((res) => {
         if (res.data?.length) {
@@ -28,7 +29,7 @@ export default function SearchBar() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder='Search "milk, bread, sugar, butter, paneer, chocolate"'
+          placeholder={t('search.placeholder')}
           className="search-bar__input w-full h-12 pl-11 pr-4 bg-surface-white border-2 border-border-gray rounded-lg text-sm text-text-body placeholder:text-text-muted focus:outline-none focus:border-brand-green transition-colors"
         />
         {query && (
@@ -44,7 +45,7 @@ export default function SearchBar() {
       </div>
 
       <div className="search-bar__popular flex items-center gap-2 flex-wrap">
-        <span className="search-bar__popular-label text-[11px] font-semibold text-text-muted uppercase tracking-wider">Popular:</span>
+        <span className="search-bar__popular-label text-[11px] font-semibold text-text-muted uppercase tracking-wider">{t('search.popular')}</span>
         {popularSearches.map((term) => (
           <button
             key={term}

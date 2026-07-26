@@ -1,45 +1,48 @@
 import { useState, useEffect, useCallback } from 'react'
 import { getBanners } from '../../api/client'
+import { useTranslation } from '../../translations'
 import './PromoBanner.css'
 
-const fallbackBanners = [
-  {
-    _id: '1',
-    title: 'Flat 20% OFF',
-    subtitle: 'On all grocery essentials. Use code BUYQK20',
-    ctaText: 'Shop Now',
-    bgColor: '#0C831F',
-    textColor: '#FFFFFF',
-  },
-  {
-    _id: '2',
-    title: 'Fresh Fruits & Veggies',
-    subtitle: 'Farm fresh produce delivered in 10 minutes',
-    ctaText: 'Order Now',
-    bgColor: '#51AA1B',
-    textColor: '#FFFFFF',
-  },
-  {
-    _id: '3',
-    title: 'Daily Dairy Deals',
-    subtitle: 'Milk, Curd, Paneer & more at lowest prices',
-    ctaText: 'Explore',
-    bgColor: '#F8CB46',
-    textColor: '#1A1A2E',
-  },
-]
-
 export default function PromoBanner() {
-  const [banners, setBanners] = useState(fallbackBanners)
+  const [banners, setBanners] = useState([])
   const [current, setCurrent] = useState(0)
+  const { t } = useTranslation()
+
+  const fallbackBanners = [
+    {
+      _id: '1',
+      title: t('promo.banner1Title'),
+      subtitle: t('promo.banner1Desc'),
+      ctaText: t('promo.banner1Btn'),
+      bgColor: '#0C831F',
+      textColor: '#FFFFFF',
+    },
+    {
+      _id: '2',
+      title: t('promo.banner2Title'),
+      subtitle: t('promo.banner2Desc'),
+      ctaText: t('promo.banner2Btn'),
+      bgColor: '#51AA1B',
+      textColor: '#FFFFFF',
+    },
+    {
+      _id: '3',
+      title: t('promo.banner3Title'),
+      subtitle: t('promo.banner3Desc'),
+      ctaText: t('promo.banner3Btn'),
+      bgColor: '#F8CB46',
+      textColor: '#1A1A2E',
+    },
+  ]
 
   useEffect(() => {
+    setBanners(fallbackBanners)
     getBanners()
       .then((res) => {
         if (res.data?.length) setBanners(res.data)
       })
       .catch(() => {})
-  }, [])
+  }, [t])
 
   const next = useCallback(() => {
     setCurrent((prev) => (prev + 1) % banners.length)
@@ -55,6 +58,8 @@ export default function PromoBanner() {
   }, [next])
 
   const banner = banners[current]
+
+  if (!banner) return null
 
   return (
     <div className="promo-banner max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">

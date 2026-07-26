@@ -1,6 +1,7 @@
 .footer {
   background-color: var(--color-midnight);
   margin-top: 2rem;
+  contain: layout style;
 }
 
 .footer__link {
@@ -13,4 +14,20 @@
 
 .footer__bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
+
+.footer__copyright,
+.footer__tagline {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
