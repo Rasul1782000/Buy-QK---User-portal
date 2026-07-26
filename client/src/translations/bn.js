@@ -146,6 +146,23 @@ const bn = {
   'location.delivery': '১০ মিনিটে ডেলিভারি',
   'location.detectBtn': 'আমার অবস্থান সনাক্ত করুন',
   'location.detectBtnLoading': 'সনাক্ত করছে...',
+  // ── Login (Phone) ──
+  'login.email': 'ইমেইল',
+  'login.phone': 'ফোন',
+  'login.phoneLabel': 'ফোন নম্বর',
+  'login.phonePlaceholder': 'ফোন নম্বর দিন',
+
+  // ── OTP ──
+  'otp.title': 'OTP যাচাই করুন',
+  'otp.subtitle': 'নিচে পাঠানো ৬-অঙ্কের কোড দিন',
+  'otp.verify': 'যাচাই করুন',
+  'otp.verifying': 'যাচাই করা হচ্ছে...',
+  'otp.invalid': 'অক্ষম OTP। অনুগ্রহ করে আবার চেষ্টা করুন।',
+  'otp.incomplete': 'পূর্ণ ৬-অঙ্কের কোড দিন।',
+  'otp.resend': 'OTP পুনরায় পাঠান',
+  'otp.resendIn': 'OTP পুনরায় পাঠান',
+  'otp.sending': 'পাঠাচ্ছে...',
+  'otp.resendFailed': 'OTP পুনরায় পাঠানো ব্যর্থ।',
 }
 
 export default bn

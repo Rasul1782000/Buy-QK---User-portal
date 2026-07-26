@@ -1,40 +1,61 @@
 .category-card {
   text-decoration: none;
-  height: 100%;
-  min-height: 108px;
-  max-height: 120px;
+  height: 108px;
+  width: 100%;
   contain: strict;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: relative;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background-color: var(--color-surface-white);
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+  cursor: pointer;
+  contain: layout style paint size;
+}
+
+.category-card:hover {
+  border-color: var(--color-brand-green);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .category-card__icon {
-  width: 4rem;
-  height: 4rem;
-  min-width: 4rem;
-  min-height: 4rem;
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  min-height: 64px;
+  max-width: 64px;
+  max-height: 64px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
   flex-shrink: 0;
-  position: relative;
-  z-index: 1;
-}
-
-.category-card__name {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-  line-height: 1.4;
-  min-height: 1.4em;
-  max-height: 2.8em;
-  position: relative;
-  z-index: 1;
 }
 
 .category-card:hover .category-card__icon {
   transform: scale(1.1);
+}
+
+.category-card__name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: center;
+  line-height: 1.3;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  max-height: 26px;
+  min-height: 26px;
 }
 
 .category-card:hover .category-card__name {

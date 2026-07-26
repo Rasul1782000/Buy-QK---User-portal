@@ -146,6 +146,23 @@ const hi = {
   'location.delivery': '10 मिनट में डिलीवरी',
   'location.detectBtn': 'मेरा स्थान पता लगाएं',
   'location.detectBtnLoading': 'पता लगा रहे हैं...',
+  // ── Login (Phone) ──
+  'login.email': 'ईमेल',
+  'login.phone': 'फोन',
+  'login.phoneLabel': 'फोन नंबर',
+  'login.phonePlaceholder': 'फोन नंबर दर्ज करें',
+
+  // ── OTP ──
+  'otp.title': 'OTP सत्यापित करें',
+  'otp.subtitle': 'नीचे भेजा गया 6-अंक का कोड दर्ज करें',
+  'otp.verify': 'सत्यापित करें',
+  'otp.verifying': 'सत्यापित कर रहे हैं...',
+  'otp.invalid': 'अमान्य OTP। कृपया फिर से प्रयास करें।',
+  'otp.incomplete': 'कृपया पूर्ण 6-अंक का कोड दर्ज करें।',
+  'otp.resend': 'OTP पुनः भेजें',
+  'otp.resendIn': 'OTP पुनः भेजें',
+  'otp.sending': 'भेज रहे हैं...',
+  'otp.resendFailed': 'OTP पुनः भेजने में विफल।',
 }
 
 export default hi

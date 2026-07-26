@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: space-between;
   contain: layout style;
-  min-height: 0;
 }
 
 .category-grid__see-all {
@@ -16,12 +15,11 @@
 }
 
 .category-grid__list {
-  contain: layout style;
-  min-height: 0;
+  contain: layout style paint;
+  grid-template-rows: 108px;
+  grid-auto-rows: 108px;
 }
 
 .category-grid__list > * {
-  contain: layout style size;
-  min-height: 0;
   overflow: hidden;
 }

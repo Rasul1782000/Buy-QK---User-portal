@@ -153,6 +153,24 @@ const en = {
   'lang.hi': 'हिन्दी',
   'lang.bn': 'বাংলা',
   'lang.kn': 'ಕನ್ನಡ',
+
+  // ── Login (Phone) ──
+  'login.email': 'Email',
+  'login.phone': 'Phone',
+  'login.phoneLabel': 'Phone Number',
+  'login.phonePlaceholder': 'Enter phone number',
+
+  // ── OTP ──
+  'otp.title': 'Verify OTP',
+  'otp.subtitle': 'Enter the 6-digit code sent to',
+  'otp.verify': 'Verify',
+  'otp.verifying': 'Verifying...',
+  'otp.invalid': 'Invalid OTP. Please try again.',
+  'otp.incomplete': 'Please enter the complete 6-digit code.',
+  'otp.resend': 'Resend OTP',
+  'otp.resendIn': 'Resend OTP in',
+  'otp.sending': 'Sending...',
+  'otp.resendFailed': 'Failed to resend OTP.',
 }
 
 export default en

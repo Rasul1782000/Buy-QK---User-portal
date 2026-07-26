@@ -66,7 +66,8 @@ BuyQK/
 | Route            | Page                  | Description                         |
 |------------------|-----------------------|-------------------------------------|
 | `/`              | WelcomeFlash          | Splash/landing screen               |
-| `/login`         | LoginPage             | User login                          |
+| `/login`         | LoginPage             | User login (email or phone + password, then OTP) |
+| `/otp`          | OTPPage               | 6-digit OTP verification after login            |
 | `/signup`        | SignupPage            | User registration                   |
 | `/home`          | AppLayout → HomePage  | Main app layout with all sections   |
 | `/forgot-password` | ForgotPasswordPage  | Password reset request              |

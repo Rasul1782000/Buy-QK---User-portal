@@ -146,6 +146,23 @@ const kn = {
   'location.delivery': '10 ನಿಮಿಷಗಳಲ್ಲಿ ಡೆಲಿವರಿ',
   'location.detectBtn': 'ನನ್ನ ಸ್ಥಳ ಪತ್ತೆ ಮಾಡಿ',
   'location.detectBtnLoading': 'ಪತ್ತೆ ಮಾಡಲಾಗುತ್ತಿದೆ...',
+  // ── Login (Phone) ──
+  'login.email': 'ಇಮೇಲ್',
+  'login.phone': 'ಫೋನ್',
+  'login.phoneLabel': 'ಫೋನ್ ಸಂಖ್ಯೆ',
+  'login.phonePlaceholder': 'ಫೋನ್ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ',
+
+  // ── OTP ──
+  'otp.title': 'OTP ಸತ್ಯಾಪಿಸಿ',
+  'otp.subtitle': 'ಕೆಳಗೆ ಕಳುಹಿಸಲಾದ 6-ಅಂಕಿಯ OTP ಅನ್ನು ನಮೂದಿಸಿ',
+  'otp.verify': 'ಪರಿಶೀಲಿಸಿ',
+  'otp.verifying': 'ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ...',
+  'otp.invalid': 'ಅಮಾನ್ಯ OTP. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.',
+  'otp.incomplete': 'ಪೂರ್ಣ 6-ಅಂಕಿಯ OTP ಅನ್ನು ನಮೂದಿಸಿ.',
+  'otp.resend': 'OTP ಮತ್ತೆ ಕಳುಹಿಸಿ',
+  'otp.resendIn': 'OTP ಮತ್ತೆ ಕಳುಹಿಸಿ',
+  'otp.sending': 'ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ...',
+  'otp.resendFailed': 'OTP ಮತ್ತೆ ಕಳುಹಿಸುವಲ್ಲಿ ವಿಫಲವಾಗಿದೆ.',
 }
 
 export default kn

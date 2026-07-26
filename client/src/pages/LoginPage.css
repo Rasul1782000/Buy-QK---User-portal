@@ -603,3 +603,39 @@
     height: 42px;
   }
 }
+
+/*  Method Toggle (Email / Phone) */
+.login__method-toggle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.login__method-btn {
+  flex: 1;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #111622;
+  color: #6B7280;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.login__method-btn:hover {
+  color: #D1D5DB;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.login__method-btn--active {
+  color: #F97316;
+  border-color: rgba(249, 115, 22, 0.4);
+  background: rgba(249, 115, 22, 0.08);
+}
+
+.login__method-btn--active:hover {
+  color: #FB923C;
+  border-color: rgba(249, 115, 22, 0.6);
+}

@@ -6,6 +6,7 @@ import WelcomeFlash from './components/WelcomeFlash'
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage'
+import OTPPage from './pages/OTPPage'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
             <Route path="/home" element={<AppLayout />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/otp" element={<OTPPage />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

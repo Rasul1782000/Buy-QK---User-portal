@@ -146,6 +146,23 @@ const ta = {
   'location.delivery': '10 நிமிடங்களில் டெலிவரி',
   'location.detectBtn': 'என் இருப்பிடத்தைக் கண்டறி',
   'location.detectBtnLoading': 'கண்டறிகிறது...',
+  // ── Login (Phone) ──
+  'login.email': 'மின்னஞ்சல்',
+  'login.phone': 'பொறியலைப் படி',
+  'login.phoneLabel': 'பொறியல் எண்',
+  'login.phonePlaceholder': 'பொறியல் எண்ணை உள்ளிடவும்',
+
+  // ── OTP ──
+  'otp.title': 'OTP சரிபார்க்கவும்',
+  'otp.subtitle': 'கீழே அனுப்பப்பட்ட 6 இலக்க எண்ணை உள்ளிடவும்',
+  'otp.verify': 'சரிபார்',
+  'otp.verifying': 'சரிபார்க்கிறது...',
+  'otp.invalid': 'தப்பான OTP. வீண்டும் முயற்சிக்கவும்.',
+  'otp.incomplete': 'கூடுதலாக 6 இலக்க எண்ணை உள்ளிடவும்.',
+  'otp.resend': 'OTP மீண்டும் அனுப்பு',
+  'otp.resendIn': 'OTP மீண்டும் அனுப்ப',
+  'otp.sending': 'அனுப்புகிறது...',
+  'otp.resendFailed': 'OTP மீண்டும் அனுப்ப தோல்வி.',
 }
 
 export default ta
