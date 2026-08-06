@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { forgotPassword, resetPassword } from '../api/client'
 import { useLanguage } from '../context/LanguageContext'
 import { useTranslation } from '../translations'
@@ -54,6 +55,7 @@ export default function ForgotPasswordPage() {
   const [submitting, setSubmitting] = useState(false)
   const { language, setLanguage, getLabel, LANGUAGES } = useLanguage()
   const { t } = useTranslation()
+  const navigate = useNavigate()
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault()
@@ -95,7 +97,7 @@ export default function ForgotPasswordPage() {
       return
     }
 
-    if (newPassword.length < 6) {
+    if (newPassword.length < 8) {
       setError(t('forgot.error.length'))
       return
     }
@@ -105,7 +107,7 @@ export default function ForgotPasswordPage() {
       const res = await resetPassword({ token: resetToken, password: newPassword })
       setMessage(res.data.message + t('forgot.redirect'))
       setTimeout(() => {
-        window.location.href = '/login'
+        navigate('/login')
       }, 2000)
     } catch (err) {
       setError(err.response?.data?.message || t('forgot.error.failed'))

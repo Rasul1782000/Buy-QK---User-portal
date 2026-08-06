@@ -9,6 +9,7 @@ const kn = {
   'common.or': 'ಅಥವಾ',
   'common.continueGoogle': 'Google ನೊಂದಿಗೆ ಮುಂದುವರಿಸಿ',
   'common.continueFacebook': 'Facebook ನೊಂದಿಗೆ ಮುಂದುವರಿಸಿ',
+  'common.comingSoon': 'ಶೀಘ್ರದಲ್ಲೇ ಬರುತ್ತದೆ',
 
   // ── Login ──
   'login.title': 'ಮತ್ತೆ ಸ್ವಾಗತ! 👋',
@@ -42,7 +43,7 @@ const kn = {
   'signup.footerLink': 'ಲಾಗಿನ್',
   'signup.error.empty': 'ದಯವಿಟ್ಟು ಎಲ್ಲಾ ಅಗತ್ಯ ಕ್ಷೇತ್ರಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ',
   'signup.error.mismatch': 'ಪಾಸ್ವರ್ಡ್ ಹೊಂದಿಕೆಯಾಗುತ್ತಿಲ್ಲ',
-  'signup.error.length': 'ಪಾಸ್ವರ್ಡ್ ಕನಿಷ್ಠ 6 ಅಕ್ಷರಗಳಾಗಿರಬೇಕು',
+  'signup.error.length': 'ಪಾಸ್ವರ್ಡ್ ಕನಿಷ್ಠ 8 ಅಕ್ಷರಗಳಾಗಿರಬೇಕು',
   'signup.error.terms': 'ದಯವಿಟ್ಟು ನಿಯಮಗಳನ್ನು ಒಪ್ಪಿಕೊಳ್ಳಿ',
   'signup.error.failed': 'ಸೈನ್ ಅಪ್ ವಿಫಲವಾಗಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.',
 
@@ -66,7 +67,7 @@ const kn = {
   'forgot.error.emptyEmail': 'ದಯವಿಟ್ಟು ನಿಮ್ಮ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ',
   'forgot.error.emptyPasswords': 'ದಯವಿಟ್ಟು ಎರಡೂ ಪಾಸ್ವರ್ಡ್ ಕ್ಷೇತ್ರಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ',
   'forgot.error.mismatch': 'ಪಾಸ್ವರ್ಡ್ ಹೊಂದಿಕೆಯಾಗುತ್ತಿಲ್ಲ',
-  'forgot.error.length': 'ಪಾಸ್ವರ್ಡ್ ಕನಿಷ್ಠ 6 ಅಕ್ಷರಗಳಾಗಿರಬೇಕು',
+  'forgot.error.length': 'ಪಾಸ್ವರ್ಡ್ ಕನಿಷ್ಠ 8 ಅಕ್ಷರಗಳಾಗಿರಬೇಕು',
   'forgot.error.failed': 'ಏನೋ ತಪ್ಪಾಗಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.',
 
   // ── Home ──

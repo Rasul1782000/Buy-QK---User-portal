@@ -1,3 +1,4 @@
+const User = require('./models/User')
 const Category = require('./models/Category')
 const Banner = require('./models/Banner')
 const PopularSearch = require('./models/PopularSearch')
@@ -62,6 +63,22 @@ const popularSearches = [
   { term: 'Eggs', order: 8 },
 ]
 
+const demoUsers = [
+  {
+    name: 'Demo User',
+    email: 'demo@buyqk.com',
+    password: 'Demo@1234',
+    phone: '+919999999999',
+    role: 'user',
+  },
+  {
+    name: 'Admin User',
+    email: 'admin@buyqk.com',
+    password: 'Admin@1234',
+    role: 'admin',
+  },
+]
+
 async function seedDb() {
   const existingCategories = await Category.countDocuments()
   if (existingCategories > 0) {
@@ -79,4 +96,15 @@ async function seedDb() {
   console.log(`Seeded ${popularSearches.length} popular searches`)
 }
 
-module.exports = { seedDb, categories, banners, popularSearches }
+async function seedUsers() {
+  for (const demoUser of demoUsers) {
+    const existing = await User.findOne({ email: demoUser.email })
+    if (existing) continue
+    const user = new User(demoUser)
+    user.password = demoUser.password
+    await user.save()
+    console.log(`Seeded demo user: ${demoUser.email} (role: ${demoUser.role})`)
+  }
+}
+
+module.exports = { seedDb, seedUsers, categories, banners, popularSearches, demoUsers }

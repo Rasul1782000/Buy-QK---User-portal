@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from '../../translations'
+import { useAuth } from '../../context/useAuth'
 import logoImg from '../../assets/logos.png'
 import './WelcomeFlash.css'
 
 export default function WelcomeFlash() {
   const navigate = useNavigate()
+  const { user, loading } = useAuth()
   const [visible, setVisible] = useState(false)
   const [fadeOut, setFadeOut] = useState(false)
   const { t } = useTranslation()
@@ -21,11 +23,11 @@ export default function WelcomeFlash() {
   }, [])
 
   useEffect(() => {
-    if (fadeOut) {
-      const t3 = setTimeout(() => navigate('/login', { replace: true }), 400)
+    if (fadeOut && !loading) {
+      const t3 = setTimeout(() => navigate(user ? '/home' : '/login', { replace: true }), 400)
       return () => clearTimeout(t3)
     }
-  }, [fadeOut, navigate])
+  }, [fadeOut, loading, user, navigate])
 
   return (
     <div className={`welcome-flash ${fadeOut ? 'welcome-flash--exit' : ''}`}>

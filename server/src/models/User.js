@@ -21,13 +21,25 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, 'Password is required'],
-      minlength: [6, 'Password must be at least 6 characters'],
+      minlength: [8, 'Password must be at least 8 characters'],
+      validate: {
+        validator: function (value) {
+          return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/.test(value)
+        },
+        message: 'Password must contain at least one uppercase letter, one lowercase letter and one number',
+      },
       select: false,
     },
     phone: {
       type: String,
       trim: true,
       default: '',
+      match: [/^$|^\+?\d{7,15}$/, 'Please provide a valid phone number'],
+    },
+    role: {
+      type: String,
+      enum: ['user', 'admin'],
+      default: 'user',
     },
     resetPasswordToken: {
       type: String,
@@ -37,9 +49,40 @@ const userSchema = new mongoose.Schema(
       type: Date,
       select: false,
     },
+    otpHash: {
+      type: String,
+      select: false,
+    },
+    otpExpires: {
+      type: Date,
+      select: false,
+    },
+    otpAttempts: {
+      type: Number,
+      default: 0,
+      select: false,
+    },
+    otpFor: {
+      type: String,
+      select: false,
+    },
+    otpSentAt: {
+      type: Date,
+      select: false,
+    },
   },
   { timestamps: true }
 )
+
+userSchema.index({ email: 1 }, { unique: true })
+userSchema.index({ phone: 1 }, { unique: true, sparse: true })
+
+userSchema.pre('save', function (next) {
+  if (!this.phone || !this.phone.trim()) {
+    this.phone = undefined
+  }
+  next()
+})
 
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next()

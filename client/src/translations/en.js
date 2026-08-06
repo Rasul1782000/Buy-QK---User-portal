@@ -9,11 +9,13 @@ const en = {
   'common.or': 'OR',
   'common.continueGoogle': 'Continue with Google',
   'common.continueFacebook': 'Continue with Facebook',
+  'common.comingSoon': 'Coming soon',
 
   // ── Login ──
   'login.title': 'Welcome back! 👋',
   'login.subtitle': 'Login to your BuyQK account and continue shopping.',
   'login.emailLabel': 'Email Address',
+  'login.identifierPlaceholder': 'Enter email or phone number',
   'login.forgotPassword': 'Forgot Password?',
   'login.rememberMe': 'Remember Me',
   'login.btn': 'Login →',
@@ -22,6 +24,9 @@ const en = {
   'login.footerLink': 'Create Account',
   'login.error.empty': 'Please enter both email and password',
   'login.error.invalid': 'Invalid email or password. Please try again.',
+  'login.demoUser': 'Demo User Login →',
+  'login.demoAdmin': 'Admin Demo Login →',
+  'login.demoLabel': 'Demo Accounts',
 
   // ── Signup ──
   'signup.title': 'Create account',
@@ -42,7 +47,7 @@ const en = {
   'signup.footerLink': 'Sign in',
   'signup.error.empty': 'Please fill in all required fields',
   'signup.error.mismatch': 'Passwords do not match',
-  'signup.error.length': 'Password must be at least 6 characters',
+  'signup.error.length': 'Password must be at least 8 characters',
   'signup.error.terms': 'Please agree to the Terms & Conditions',
   'signup.error.failed': 'Signup failed. Please try again.',
 
@@ -66,7 +71,7 @@ const en = {
   'forgot.error.emptyEmail': 'Please enter your email address',
   'forgot.error.emptyPasswords': 'Please fill in both password fields',
   'forgot.error.mismatch': 'Passwords do not match',
-  'forgot.error.length': 'Password must be at least 6 characters',
+  'forgot.error.length': 'Password must be at least 8 characters',
   'forgot.error.failed': 'Something went wrong. Please try again.',
 
   // ── Home ──

@@ -16,8 +16,8 @@
 
 .category-grid__list {
   contain: layout style paint;
-  grid-template-rows: 108px;
-  grid-auto-rows: 108px;
+  grid-template-rows: clamp(72px, 12vh, 108px);
+  grid-auto-rows: clamp(72px, 12vh, 108px);
 }
 
 .category-grid__list > * {

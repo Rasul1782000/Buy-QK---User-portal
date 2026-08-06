@@ -9,6 +9,7 @@ const hi = {
   'common.or': 'या',
   'common.continueGoogle': 'Google से जारी रखें',
   'common.continueFacebook': 'Facebook से जारी रखें',
+  'common.comingSoon': 'जल्द आ रहा है',
 
   // ── Login ──
   'login.title': 'वापसी पर स्वागत है! 👋',
@@ -42,7 +43,7 @@ const hi = {
   'signup.footerLink': 'लॉगिन',
   'signup.error.empty': 'कृपया सभी आवश्यक फ़ील्ड भरें',
   'signup.error.mismatch': 'पासवर्ड मेल नहीं खाते',
-  'signup.error.length': 'पासवर्ड कम से कम 6 अक्षरों का होना चाहिए',
+  'signup.error.length': 'पासवर्ड कम से कम 8 अक्षरों का होना चाहिए',
   'signup.error.terms': 'कृपया शर्तों और नियमों से सहमत हों',
   'signup.error.failed': 'साइन अप विफल। कृपया पुनः प्रयास करें।',
 
@@ -66,7 +67,7 @@ const hi = {
   'forgot.error.emptyEmail': 'कृपया अपना ईमेल पता दर्ज करें',
   'forgot.error.emptyPasswords': 'कृपया दोनों पासवर्ड फ़ील्ड भरें',
   'forgot.error.mismatch': 'पासवर्ड मेल नहीं खाते',
-  'forgot.error.length': 'पासवर्ड कम से कम 6 अक्षरों का होना चाहिए',
+  'forgot.error.length': 'पासवर्ड कम से कम 8 अक्षरों का होना चाहिए',
   'forgot.error.failed': 'कुछ गड़बड़ हुई। कृपया पुनः प्रयास करें।',
 
   // ── Home ──

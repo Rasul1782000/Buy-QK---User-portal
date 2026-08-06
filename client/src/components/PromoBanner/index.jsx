@@ -67,7 +67,7 @@ export default function PromoBanner() {
         className="promo-banner__slide relative w-full rounded-xl overflow-hidden"
         style={{ backgroundColor: banner.bgColor || '#0C831F' }}
       >
-        <div className="promo-banner__content flex items-center justify-between px-6 sm:px-10 py-8 sm:py-12">
+        <div className="promo-banner__content flex items-center justify-between px-5 sm:px-10 py-5 sm:py-8">
           <div className="promo-banner__text flex-1">
             <h2
               className="promo-banner__title text-2xl sm:text-4xl font-extrabold mb-2 tracking-tight"

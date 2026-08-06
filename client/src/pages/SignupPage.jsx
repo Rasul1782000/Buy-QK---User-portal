@@ -70,7 +70,7 @@ export default function SignupPage() {
       return
     }
 
-    if (password.length < 6) {
+    if (password.length < 8) {
       setError(t('signup.error.length'))
       return
     }
@@ -83,7 +83,7 @@ export default function SignupPage() {
     setSubmitting(true)
     try {
       const res = await signup({ name, email, password })
-      saveAuth(res.data.token, res.data.user)
+      saveAuth(res.data.user)
       navigate('/home')
     } catch (err) {
       setError(err.response?.data?.message || t('signup.error.failed'))
@@ -203,11 +203,11 @@ export default function SignupPage() {
           </div>
 
           <div className="login__social">
-            <button type="button" className="login__social-btn-full">
+            <button type="button" className="login__social-btn-full" disabled title={t('common.comingSoon')}>
               <GoogleIcon />
               <span>{t('common.continueGoogle')}</span>
             </button>
-            <button type="button" className="login__social-btn-full">
+            <button type="button" className="login__social-btn-full" disabled title={t('common.comingSoon')}>
               <FacebookIcon />
               <span>{t('common.continueFacebook')}</span>
             </button>

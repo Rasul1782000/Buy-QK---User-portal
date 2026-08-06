@@ -9,6 +9,7 @@ const ta = {
   'common.or': 'அல்லது',
   'common.continueGoogle': 'Google மூலம் தொடரவும்',
   'common.continueFacebook': 'Facebook மூலம் தொடரவும்',
+  'common.comingSoon': 'விரைவில் வருகிறது',
 
   // ── Login ──
   'login.title': 'மீண்டும் வரவேற்கிறோம்! 👋',
@@ -42,7 +43,7 @@ const ta = {
   'signup.footerLink': 'உள்நுழை',
   'signup.error.empty': 'அனைத்து தேவையான புலங்களையும் நிரப்பவும்',
   'signup.error.mismatch': 'கடவுச்சொற்கள் பொருந்தவில்லை',
-  'signup.error.length': 'கடவுச்சொல் குறைந்தது 6 எழுத்துகள் இருக்க வேண்டும்',
+  'signup.error.length': 'கடவுச்சொல் குறைந்தது 8 எழுத்துகள் இருக்க வேண்டும்',
   'signup.error.terms': 'விதிகள் மற்றும் நிபந்தனைகளை ஏற்கவும்',
   'signup.error.failed': 'பதிவு தோல்வி. மீண்டும் முயற்சிக்கவும்.',
 
@@ -66,7 +67,7 @@ const ta = {
   'forgot.error.emptyEmail': 'உங்கள் மின்னஞ்சல் முகவரியை உள்ளிடவும்',
   'forgot.error.emptyPasswords': 'இரண்டு கடவுச்சொல் புலங்களையும் நிரப்பவும்',
   'forgot.error.mismatch': 'கடவுச்சொற்கள் பொருந்தவில்லை',
-  'forgot.error.length': 'கடவுச்சொல் குறைந்தது 6 எழுத்துகள் இருக்க வேண்டும்',
+  'forgot.error.length': 'கடவுச்சொல் குறைந்தது 8 எழுத்துகள் இருக்க வேண்டும்',
   'forgot.error.failed': 'ஏதோ தவறு நடந்தது. மீண்டும் முயற்சிக்கவும்.',
 
   // ── Home ──

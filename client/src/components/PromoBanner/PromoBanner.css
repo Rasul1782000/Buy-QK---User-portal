@@ -1,7 +1,7 @@
 .promo-banner__slide {
   position: relative;
   width: 100%;
-  min-height: 180px;
+  min-height: clamp(120px, 20vh, 180px);
   overflow: hidden;
 }
 

@@ -1,8 +1,9 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { verifyOTP } from '../api/client'
+import { verifyOTP, sendOTP } from '../api/client'
 import { useTranslation } from '../translations'
 import { useLanguage } from '../context/LanguageContext'
+import { useAuth } from '../context/useAuth'
 import './OTPPage.css'
 
 export default function OTPPage() {
@@ -14,18 +15,43 @@ export default function OTPPage() {
   const inputRefs = useRef([])
   const navigate = useNavigate()
   const location = useLocation()
+  const { saveAuth } = useAuth()
   const { t } = useTranslation()
-  const { language, setLanguage, getLabel, LANGUAGES } = useLanguage()
+  const { language, getLabel } = useLanguage()
 
-  const phone = location.state?.phone || ''
-  const email = location.state?.email || ''
-  const identifier = phone || email
+  const identifier =
+    location.state?.identifier || sessionStorage.getItem('buyqk_pending_identifier') || ''
+  const [devOtp, setDevOtp] = useState(location.state?.devOtp || '')
 
   useEffect(() => {
+    if (!identifier) {
+      navigate('/login', { replace: true })
+      return
+    }
+    sessionStorage.setItem('buyqk_pending_identifier', identifier)
     if (inputRefs.current[0]) {
       inputRefs.current[0].focus()
     }
-  }, [])
+  }, [identifier, navigate])
+
+  const requestOtp = useCallback(
+    async (initial) => {
+      if (initial && identifier && !location.state?.devOtp) {
+        try {
+          const res = await sendOTP({ email: identifier.includes('@') ? identifier : undefined, phone: identifier.includes('@') ? undefined : identifier })
+          if (res.data?.devOtp) setDevOtp(res.data.devOtp)
+          setCountdown(60)
+        } catch {
+          // code already sent during login — ignore cooldown errors
+        }
+      }
+    },
+    [identifier, location.state?.devOtp]
+  )
+
+  useEffect(() => {
+    requestOtp(true)
+  }, [requestOtp])
 
   useEffect(() => {
     if (countdown > 0) {
@@ -71,13 +97,14 @@ export default function OTPPage() {
     setError('')
     setSubmitting(true)
     try {
-      const res = await verifyOTP({ phone, email, otp: otpValue })
-      if (res.data?.token) {
-        localStorage.setItem('buyqk_token', res.data.token)
-        if (res.data.user) {
-          localStorage.setItem('buyqk_user', JSON.stringify(res.data.user))
-        }
-        navigate('/home')
+      const payload = identifier.includes('@')
+        ? { email: identifier, otp: otpValue }
+        : { phone: identifier, otp: otpValue }
+      const res = await verifyOTP(payload)
+      if (res.data?.user) {
+        saveAuth(res.data.user)
+        sessionStorage.removeItem('buyqk_pending_identifier')
+        navigate('/home', { replace: true })
       } else {
         setError(t('otp.invalid'))
       }
@@ -91,11 +118,20 @@ export default function OTPPage() {
   const handleResend = async () => {
     if (countdown > 0) return
     setResending(true)
+    setError('')
     try {
-      await verifyOTP({ phone, email, otp: 'resend' })
+      const res = await sendOTP({
+        email: identifier.includes('@') ? identifier : undefined,
+        phone: identifier.includes('@') ? undefined : identifier,
+      })
+      if (res.data?.devOtp) setDevOtp(res.data.devOtp)
       setCountdown(60)
-    } catch {
-      setError(t('otp.resendFailed'))
+    } catch (err) {
+      if (err.response?.status === 429) {
+        setError(err.response?.data?.message || t('otp.resendFailed'))
+      } else {
+        setError(t('otp.resendFailed'))
+      }
     } finally {
       setResending(false)
     }
@@ -106,11 +142,7 @@ export default function OTPPage() {
       <div className="otp__container">
         <div className="otp__card otp__card--animate">
           <div className="otp__lang-selector">
-            <button
-              type="button"
-              className="otp__lang-btn"
-              onClick={() => {}}
-            >
+            <button type="button" className="otp__lang-btn" onClick={() => {}}>
               {getLabel(language)}
             </button>
           </div>
@@ -124,6 +156,12 @@ export default function OTPPage() {
               {t('otp.subtitle')} <strong>{identifier}</strong>
             </p>
           </div>
+
+          {devOtp && (
+            <div className="otp__alert otp__alert--success">
+              <span>Dev code: {devOtp}</span>
+            </div>
+          )}
 
           {error && (
             <div className="otp__alert otp__alert--error">
@@ -152,7 +190,7 @@ export default function OTPPage() {
               ))}
             </div>
 
-            <button type="submit" className="otp__btn" disabled={submitting || otp.some(d => !d)}>
+            <button type="submit" className="otp__btn" disabled={submitting || otp.some((d) => !d)}>
               {submitting ? t('otp.verifying') : t('otp.verify')}
             </button>
           </form>

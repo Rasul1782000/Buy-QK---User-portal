@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../api/client'
-import logoImg from '../assets/logos.png'
 import { useAuth } from '../context/useAuth'
+import logoImg from '../assets/logos.png'
 import { useLanguage } from '../context/LanguageContext'
 import { useTranslation } from '../translations'
 import './LoginPage.css'
@@ -21,23 +21,6 @@ function ChevronDownIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="login__lang-arrow">
       <polyline points="6 9 12 15 18 9" />
-    </svg>
-  )
-}
-
-function MailIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="login__input-icon-left">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-      <polyline points="22,6 12,13 2,6" />
-    </svg>
-  )
-}
-
-function PhoneIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="login__input-icon-left">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
     </svg>
   )
 }
@@ -89,48 +72,33 @@ function FacebookIcon() {
 }
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('')
+  const [identifier, setIdentifier] = useState('')
   const [password, setPassword] = useState('')
-  const [phone, setPhone] = useState('')
   const [rememberMe, setRememberMe] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const [showLanguages, setShowLanguages] = useState(false)
   const [error, setError] = useState('')
   const [submitting, setSubmitting] = useState(false)
-  const [loginMethod, setLoginMethod] = useState('email')
-  const { saveAuth } = useAuth()
   const navigate = useNavigate()
+  const { saveAuth } = useAuth()
   const { language, setLanguage, getLabel, LANGUAGES } = useLanguage()
   const { t } = useTranslation()
-
-  const identifier = loginMethod === 'phone' ? phone : email
 
   useEffect(() => {
     const saved = localStorage.getItem('buyqk_saved_identifier')
     if (saved) {
-      if (saved.includes('@')) {
-        setEmail(saved)
-        setLoginMethod('email')
-      } else {
-        setPhone(saved)
-        setLoginMethod('phone')
-      }
+      setIdentifier(saved)
       setRememberMe(true)
     }
   }, [])
 
-  const isPhoneLogin = loginMethod === 'phone'
-  const isEmailLogin = loginMethod === 'email'
+  const isEmail = identifier.includes('@')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
 
-    if (isEmailLogin && !email) {
-      setError(t('login.error.empty'))
-      return
-    }
-    if (isPhoneLogin && !phone) {
+    if (!identifier) {
       setError(t('login.error.empty'))
       return
     }
@@ -141,15 +109,16 @@ export default function LoginPage() {
 
     setSubmitting(true)
     try {
-      const res = await login({ email: isEmailLogin ? email : null, phone: isPhoneLogin ? phone : null, password })
-      if (res.data?.token) {
-        saveAuth(res.data.token, res.data.user)
+      const payload = isEmail ? { email: identifier, password } : { phone: identifier, password }
+      const res = await login(payload)
+      if (res.data?.otpRequired) {
         if (rememberMe) {
           localStorage.setItem('buyqk_saved_identifier', identifier)
         } else {
           localStorage.removeItem('buyqk_saved_identifier')
         }
-        navigate('/otp', { state: { phone: isPhoneLogin ? phone : null, email: isEmailLogin ? email : null } })
+        sessionStorage.setItem('buyqk_pending_identifier', identifier)
+        navigate('/otp', { state: { identifier, isPhoneLogin: !isEmail, devOtp: res.data.devOtp } })
       } else {
         navigate('/home')
       }
@@ -157,14 +126,6 @@ export default function LoginPage() {
       setError(err.response?.data?.message || t('login.error.invalid'))
     } finally {
       setSubmitting(false)
-    }
-  }
-
-  const handleInputChange = (value) => {
-    if (isPhoneLogin) {
-      setPhone(value)
-    } else {
-      setEmail(value)
     }
   }
 
@@ -225,18 +186,18 @@ export default function LoginPage() {
           <form className="login__form" onSubmit={handleSubmit}>
             <div className="login__field">
               <div className="login__field-header">
-                <label className="login__label" htmlFor="identifier">{isPhoneLogin ? t('login.phoneLabel') : t('login.emailLabel')}</label>
+                <label className="login__label" htmlFor="identifier">{t('login.emailLabel')} / {t('login.phoneLabel')}</label>
               </div>
               <div className="login__input-wrap">
-                {isPhoneLogin ? <PhoneIcon /> : <MailIcon />}
                 <input
-                  className="login__input"
+                  className="login__input login__input--no-icon"
                   id="identifier"
-                  type={isPhoneLogin ? 'tel' : 'email'}
-                  placeholder={isPhoneLogin ? t('login.phonePlaceholder') : t('common.enterEmail')}
-                  autoComplete={isPhoneLogin ? 'tel' : 'email'}
+                  type="text"
+                  inputMode="email"
+                  placeholder={t('login.identifierPlaceholder')}
+                  autoComplete="email"
                   value={identifier}
-                  onChange={(e) => handleInputChange(e.target.value)}
+                  onChange={(e) => setIdentifier(e.target.value)}
                   autoFocus
                 />
               </div>
@@ -268,23 +229,6 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <div className="login__method-toggle">
-              <button
-                type="button"
-                className={`login__method-btn ${isEmailLogin ? 'login__method-btn--active' : ''}`}
-                onClick={() => { setLoginMethod('email'); setError('') }}
-              >
-                {t('login.email')}
-              </button>
-              <button
-                type="button"
-                className={`login__method-btn ${isPhoneLogin ? 'login__method-btn--active' : ''}`}
-                onClick={() => { setLoginMethod('phone'); setError('') }}
-              >
-                {t('login.phone')}
-              </button>
-            </div>
-
             <label className="login__remember">
               <input
                 type="checkbox"
@@ -306,11 +250,11 @@ export default function LoginPage() {
           </div>
 
           <div className="login__social">
-            <button type="button" className="login__social-btn-full">
+            <button type="button" className="login__social-btn-full" disabled title={t('common.comingSoon')}>
               <GoogleIcon />
               <span>{t('common.continueGoogle')}</span>
             </button>
-            <button type="button" className="login__social-btn-full">
+            <button type="button" className="login__social-btn-full" disabled title={t('common.comingSoon')}>
               <FacebookIcon />
               <span>{t('common.continueFacebook')}</span>
             </button>

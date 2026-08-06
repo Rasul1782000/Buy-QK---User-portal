@@ -9,6 +9,7 @@ const bn = {
   'common.or': 'অথবা',
   'common.continueGoogle': 'Google দিয়ে চালিয়ে যান',
   'common.continueFacebook': 'Facebook দিয়ে চালিয়ে যান',
+  'common.comingSoon': 'শীঘ্রই আসছে',
 
   // ── Login ──
   'login.title': 'আবার স্বাগতম! 👋',
@@ -42,7 +43,7 @@ const bn = {
   'signup.footerLink': 'লগইন',
   'signup.error.empty': 'অনুগ্রহ করে সব প্রয়োজনীয় ঘর পূরণ করুন',
   'signup.error.mismatch': 'পাসওয়ার্ড মেলে না',
-  'signup.error.length': 'পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে',
+  'signup.error.length': 'পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে',
   'signup.error.terms': 'অনুগ্রহ করে শর্তাবলী মেনে নিন',
   'signup.error.failed': 'সাইন আপ ব্যর্থ। আবার চেষ্টা করুন।',
 
@@ -66,7 +67,7 @@ const bn = {
   'forgot.error.emptyEmail': 'অনুগ্রহ করে আপনার ইমেইল ঠিকানা লিখুন',
   'forgot.error.emptyPasswords': 'অনুগ্রহ করে উভয় পাসওয়ার্ড ঘর পূরণ করুন',
   'forgot.error.mismatch': 'পাসওয়ার্ড মেলে না',
-  'forgot.error.length': 'পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে',
+  'forgot.error.length': 'পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে',
   'forgot.error.failed': 'কিছু ভুল হয়েছে। আবার চেষ্টা করুন।',
 
   // ── Home ──
